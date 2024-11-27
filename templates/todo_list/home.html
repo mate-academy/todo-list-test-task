@@ -3,7 +3,30 @@
 <title>Home Page</title>
 {% endblock %}
 {% block content %}
+  <h1>
+    TODO list
+    <a class="create-btn btn btn-primary" href="#">Add task</a>
+  </h1>
+  <br>
   {% for todo in todo_list %}
-    <p>todo.title</p>
+    <h5>
+      {{ todo.title }}
+      {% if todo.is_done %}
+        <span class="green">Done</span>
+        <a class="create-btn btn btn-secondary" href="#">Undo</a>
+      {% else %}
+        <span class="red">Not done</span>
+        <a class="create-btn btn btn-primary green-btn" href="#">Complete</a>
+      {% endif %}
+    </h5>
+    <p class="created gray">Created: {{ todo.created_at }}</p>
+    <p class="gray">
+      Tags:
+      {% for tag in todo.tags.all %}
+        {{ tag.title }}
+      {% endfor %}
+      <a href="">Update</a>
+      <a href="">Delete</a>
+    </p>
   {% endfor %}
 {% endblock %}

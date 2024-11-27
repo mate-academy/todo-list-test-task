@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Tags</title>
+{% endblock %}
+
+{% block content %}
+  <h1>
+    Tags
+    <a class="create-btn btn btn-primary" href="">Add</a>
+  </h1>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  {% for tag in tag_list %}
+    <tr>
+      <td>{{ tag.title }}</td>
+      <td>
+        <a class="btn btn-secondary" href="">Update</a>
+      </td>
+      <td>
+        <a class="btn btn-secondary" href="">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endblock %}

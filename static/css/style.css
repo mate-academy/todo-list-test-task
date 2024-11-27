@@ -1,0 +1,28 @@
+body {
+    margin-top: 20px
+}
+
+.create-btn {
+    float: right;
+    margin-right: 20px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.created {
+    font-size: 12px;
+}
+
+.gray {
+    color: gray;
+}
+
+.green-btn {
+    background-color: green;
+}
