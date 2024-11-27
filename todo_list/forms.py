@@ -9,7 +9,11 @@ class TaskForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True
     )
-    deadline = forms.DateTimeField(required=False)
+    deadline = forms.DateTimeField(
+        widget=forms.DateTimeInput(),
+        help_text="year-month-day",
+        required=False
+    )
     class Meta:
         model = Task
         fields = ("title", "deadline", "tags")

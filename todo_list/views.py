@@ -10,11 +10,14 @@ from todo_list.models import Task, Tag
 class HomePageView(generic.ListView):
     model = Task
     template_name = "todo_list/home.html"
+    paginate_by = 5
+    queryset = Task.objects.order_by("is_done", "-created_at")
 
 
 class TagListView(generic.ListView):
     model = Tag
     template_name = "todo_list/tags.html"
+    paginate_by = 5
 
 
 def tag_toggle(request: HttpRequest, pk: int) -> HttpResponse:
@@ -28,6 +31,7 @@ class TagCreateView(generic.CreateView):
     model = Tag
     fields = ["title"]
     success_url = reverse_lazy("todo-list:tags")
+
 
 class TagUpdateView(generic.UpdateView):
     model = Tag
