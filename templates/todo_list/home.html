@@ -8,30 +8,30 @@
     <a class="create-btn btn btn-primary" href="{% url 'todo-list:task-create' %}">Add task</a>
   </h1>
   <br>
-  {% for todo in todo_list %}
+  {% for task in task_list %}
     <h5>
-      {{ todo.title }}
-      {% if todo.is_done %}
+      {{ task.title }}
+      {% if task.is_done %}
         <span class="green">Done</span>
-        <a class="create-btn btn btn-secondary" href="{% url 'todo-list:tag-toggle' todo.pk %}">Undo</a>
+        <a class="create-btn btn btn-secondary" href="{% url 'todo-list:tag-toggle' task.pk %}">Undo</a>
       {% else %}
         <span class="red">Not done</span>
-        <a class="create-btn btn btn-primary green-btn" href="{% url 'todo-list:tag-toggle' todo.pk %}">Complete</a>
+        <a class="create-btn btn btn-primary green-btn" href="{% url 'todo-list:tag-toggle' task.pk %}">Complete</a>
       {% endif %}
     </h5>
     <p class="created gray">
-      Created: {{ todo.created_at }}
-      {% if not todo.is_done %}
-      <span class="dark-red">Deadline: {{ todo.deadline }}</span>
+      Created: {{ task.created_at }}
+      {% if not task.is_done and task.deadline %}
+      <span class="dark-red">Deadline: {{ task.deadline }}</span>
       {% endif %}
     </p>
     <p class="gray">
       Tags:
-      {% for tag in todo.tags.all %}
+      {% for tag in task.tags.all %}
         {{ tag.title }}
       {% endfor %}
-      <a href="{% url 'todo-list:task-update' todo.pk %}">Update</a>
-      <a href="{% url 'todo-list:task-delete' todo.pk %}">Delete</a>
+      <a href="{% url 'todo-list:task-update' task.pk %}">Update</a>
+      <a href="{% url 'todo-list:task-delete' task.pk %}">Delete</a>
     </p>
   {% endfor %}
 {% endblock %}

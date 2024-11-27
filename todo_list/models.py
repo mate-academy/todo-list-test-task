@@ -10,10 +10,10 @@ class Tag(models.Model):
         return self.title
 
 
-class ToDo(models.Model):
+class Task(models.Model):
     title = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateTimeField()
+    deadline = models.DateTimeField(null=True)
     tags = models.ManyToManyField(Tag)
     is_done = models.BooleanField(default=False, blank=True)
 

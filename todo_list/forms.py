@@ -1,6 +1,6 @@
 from django import forms
 
-from todo_list.models import ToDo, Tag
+from todo_list.models import Task, Tag
 
 
 class TaskForm(forms.ModelForm):
@@ -9,6 +9,7 @@ class TaskForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True
     )
+    deadline = forms.DateTimeField(required=False)
     class Meta:
-        model = ToDo
+        model = Task
         fields = ("title", "deadline", "tags")
