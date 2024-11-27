@@ -1,13 +1,9 @@
-{% extends "base.html" %}
-{% block title %}
-  <title> {{ object|yesno:"Update,Create" }} Tag</title>
+{% extends "form_base.html" %}
+
+{% block form_title_item %}
+Tag
 {% endblock %}
-{% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} Tag</h1>
-  {% load crispy_forms_filters %}
-  <form method="post" action="">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" value="Submit">
-  </form>
+
+{% block form_item %}
+Tag
 {% endblock %}
