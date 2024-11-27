@@ -13,10 +13,10 @@
       {{ todo.title }}
       {% if todo.is_done %}
         <span class="green">Done</span>
-        <a class="create-btn btn btn-secondary" href="#">Undo</a>
+        <a class="create-btn btn btn-secondary" href="{% url 'todo-list:tag-toggle' todo.pk %}">Undo</a>
       {% else %}
         <span class="red">Not done</span>
-        <a class="create-btn btn btn-primary green-btn" href="#">Complete</a>
+        <a class="create-btn btn btn-primary green-btn" href="{% url 'todo-list:tag-toggle' todo.pk %}">Complete</a>
       {% endif %}
     </h5>
     <p class="created gray">Created: {{ todo.created_at }}</p>
