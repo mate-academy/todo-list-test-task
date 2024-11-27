@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
+from todo_list.forms import TaskForm
 from todo_list.models import ToDo, Tag
 
 
@@ -38,3 +39,20 @@ class TagDeleteView(generic.DeleteView):
     model = Tag
     fields = ["title"]
     success_url = reverse_lazy("todo-list:tags")
+
+
+class TaskCreateView(generic.CreateView):
+    model = ToDo
+    form_class = TaskForm
+    success_url = reverse_lazy("todo-list:home")
+
+
+class TaskUpdateView(generic.UpdateView):
+    model = ToDo
+    form_class = TaskForm
+    success_url = reverse_lazy("todo-list:home")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = ToDo
+    success_url = reverse_lazy("todo-list:home")

@@ -5,7 +5,7 @@
 {% block content %}
   <h1>
     TODO list
-    <a class="create-btn btn btn-primary" href="#">Add task</a>
+    <a class="create-btn btn btn-primary" href="{% url 'todo-list:task-create' %}">Add task</a>
   </h1>
   <br>
   {% for todo in todo_list %}
@@ -25,8 +25,8 @@
       {% for tag in todo.tags.all %}
         {{ tag.title }}
       {% endfor %}
-      <a href="">Update</a>
-      <a href="">Delete</a>
+      <a href="{% url 'todo-list:task-update' todo.pk %}">Update</a>
+      <a href="{% url 'todo-list:task-delete' todo.pk %}">Delete</a>
     </p>
   {% endfor %}
 {% endblock %}
