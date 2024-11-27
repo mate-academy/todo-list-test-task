@@ -19,7 +19,12 @@
         <a class="create-btn btn btn-primary green-btn" href="{% url 'todo-list:tag-toggle' todo.pk %}">Complete</a>
       {% endif %}
     </h5>
-    <p class="created gray">Created: {{ todo.created_at }}</p>
+    <p class="created gray">
+      Created: {{ todo.created_at }}
+      {% if not todo.is_done %}
+      <span class="dark-red">Deadline: {{ todo.deadline }}</span>
+      {% endif %}
+    </p>
     <p class="gray">
       Tags:
       {% for tag in todo.tags.all %}

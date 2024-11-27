@@ -11,4 +11,4 @@ class TaskForm(forms.ModelForm):
     )
     class Meta:
         model = ToDo
-        fields = ("title", "tags")
+        fields = ("title", "deadline", "tags")

@@ -26,3 +26,7 @@ body {
 .green-btn {
     background-color: green;
 }
+
+.dark-red {
+    color: rgb(120, 29, 29);
+}
