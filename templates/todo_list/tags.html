@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Tags</title>
+{% endblock %}
+
+{% block content %}
+  <h1>
+    Tags
+    <a class="create-btn btn btn-primary" href="{% url 'todo-list:tag-create' %}">Add</a>
+  </h1>
+  {% if tag_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+    {% for tag in tag_list %}
+      <tr>
+        <td>{{ tag.title }}</td>
+        <td>
+          <a class="btn btn-secondary" href="{% url 'todo-list:tag-update' pk=tag.pk %}">Update</a>
+        </td>
+        <td>
+          <a class="btn btn-secondary" href="{% url 'todo-list:tag-delete' pk=tag.pk %}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+
+  {% else %}
+    <p>No tags yet.</p>
+  {% endif %}
+
+  </table>
+{% endblock %}
