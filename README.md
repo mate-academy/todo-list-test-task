@@ -12,7 +12,7 @@ In this task, you have to implement a todo list site.
 ## Task
 
 You should have such models:
-1. Task - todo list is consist of tasks. Each task should have fields for:
+1. Task - todo list is consist of todo_list. Each task should have fields for:
     - content - describes what you should do.
     - datetime, when a task was created
     - optional deadline datetime if a task should be done until some
@@ -21,7 +21,7 @@ datetime
     - tags that are relevant for this task
 2. Tag - a tag symbolizes the theme of the task and consists only of a name.
 
-A task can have multiple tags and a tag can be in multiple tasks.
+A task can have multiple tags and a tag can be in multiple todo_list.
 
 Create the home page. The home page is accessed by `127.0.0.1:8000/`, where you
 should have:
@@ -29,8 +29,8 @@ should have:
    - Home page
    - Tag list page
     the sidebar should be on all pages.
-2. Todo list which is a list of tasks.
-   - Tasks should be ordered from `not done` to `done` and from newest to oldest
+2. Todo list which is a list of todo_list.
+   - todo_list should be ordered from `not done` to `done` and from newest to oldest
    - All task information should be displayed.
    - There should be a button to add a new task.
    - For each task add links for updating and deletion.
@@ -46,7 +46,7 @@ there you should have:
 1. Table with tags names, links for updating,  and deletion.
 2. Button to add a new tag.
 
-Of course, pages for adding tags and tasks must be also implemented.
+Of course, pages for adding tags and todo_list must be also implemented.
 
 A tag list page should look like this:
 ![](https://mate-academy-images.s3.eu-central-1.amazonaws.com/python_exam_second_scr_1c4563cb17.png)
