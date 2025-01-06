@@ -1,0 +1,37 @@
+{% extends 'todo_list/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+        </div>
+        <div class="main-content">
+            <h1>TODO list</h1>
+            <a href="{% url 'add_task' %}" class="btn add-task">Add task</a>
+            <ul class="task-list">
+                {% for task in todo_list %}
+                    <li class="task-item">
+                        <div class="task-header">
+                            <strong>{{ task.content }}</strong>
+                            {% if task.is_done %}
+                                <span class="status done">Done</span>
+                            {% else %}
+                                <span class="status not-done">Not done</span>
+                            {% endif %}
+                        </div>
+                        <p class="task-meta">
+                            Created: {{ task.created_at }}{% if task.deadline %}, Deadline: {{ task.deadline }}{% endif %}
+                        </p>
+                        <p class="tags">Tags: {{ task.tags.all|join:", " }}</p>
+                        <div class="task-actions">
+                            <a href="{% url 'update_task' task.pk %}" class="btn update">Update</a>
+                            <a href="{% url 'delete_task' task.pk %}" class="btn delete">Delete</a>
+                            <a href="{% url 'toggle_task_status' task.pk %}" class="btn toggle">
+                                {% if task.is_done %} Undo {% else %} Complete {% endif %}
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
